@@ -1,0 +1,14 @@
+{
+  "name": "varion/nghttp2",
+  "description": "PHP extension for low-level HTTP/2 primitives powered by nghttp2",
+  "version": "0.1.0",
+  "type": "php-ext",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.2"
+  },
+  "php-ext": {
+    "extension-name": "nghttp2",
+    "build-path": "."
+  }
+}
