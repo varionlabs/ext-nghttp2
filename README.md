@@ -74,6 +74,27 @@ The extension is responsible for:
 - Flow control
 - Protocol event generation (`nextEvent()`)
 
+## Integration with Event Loops
+
+Because the extension follows a Sans-I/O model, it can be integrated with
+different event loop implementations.
+
+Possible integrations include:
+
+- ReactPHP
+- Amp
+- custom polling loops
+- future PHP polling/event APIs
+
+Typical integration pattern:
+
+1. Read bytes from a socket.
+2. Pass them to `Session::receive()`.
+3. Send outbound bytes from `drainOutput()`.
+4. Process events using `nextEvent()`.
+
+This design keeps transport concerns separate from the HTTP/2 protocol engine.
+
 ## Quick Check
 
 ```bash
