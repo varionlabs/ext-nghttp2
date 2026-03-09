@@ -5,6 +5,8 @@
 #include <nghttp2/nghttp2.h>
 
 extern zend_class_entry *ce_event;
+extern zend_class_entry *ce_event_stream;
+extern zend_class_entry *ce_event_connection;
 extern zend_class_entry *ce_event_headers_received;
 extern zend_class_entry *ce_event_data_received;
 extern zend_class_entry *ce_event_stream_closed;
