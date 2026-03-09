@@ -31,6 +31,15 @@ This extension exposes nghttp2 as a Sans-I/O engine for PHP under the `Varion\\N
   - `getOpenStreamCount(): int`
   - `getStreamState(int $streamId): ?string`
 
+## Event Semantics
+
+- `StreamReset` represents a stream-level forced termination (`RST_STREAM`) and should be treated as an abnormal stream outcome.
+- `StreamClosed` is the terminal lifecycle notification for a stream. It is emitted when nghttp2 reports stream closure, regardless of whether the closure was clean or error-driven.
+- `StreamClosed::errorCode` carries the close reason from nghttp2 (`0` means `NO_ERROR`; non-zero indicates an error condition).
+- Applications that need strict error handling should evaluate both events:
+  - `StreamReset` for explicit reset handling and policy decisions.
+  - `StreamClosed` for final completion state and close reason inspection.
+
 ## TODO / Not Implemented
 
 - `SessionOptions::strictValidation` mapping to nghttp2 options
