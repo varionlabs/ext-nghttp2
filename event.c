@@ -162,38 +162,38 @@ zend_result php_nghttp2_register_event_classes(void)
 	ce_event = zend_register_internal_class(&ce);
 	ce_event->ce_flags |= ZEND_ACC_EXPLICIT_ABSTRACT_CLASS;
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "HeadersReceived", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "HeadersReceived", NULL);
 	ce_event_headers_received = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_headers_received, ZEND_STRL("streamId"), ZEND_ACC_PUBLIC);
 	zend_declare_property_null(ce_event_headers_received, ZEND_STRL("headers"), ZEND_ACC_PUBLIC);
 	zend_declare_property_bool(ce_event_headers_received, ZEND_STRL("endStream"), 0, ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "DataReceived", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "DataReceived", NULL);
 	ce_event_data_received = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_data_received, ZEND_STRL("streamId"), ZEND_ACC_PUBLIC);
 	zend_declare_property_null(ce_event_data_received, ZEND_STRL("data"), ZEND_ACC_PUBLIC);
 	zend_declare_property_bool(ce_event_data_received, ZEND_STRL("endStream"), 0, ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "StreamClosed", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "StreamClosed", NULL);
 	ce_event_stream_closed = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_stream_closed, ZEND_STRL("streamId"), ZEND_ACC_PUBLIC);
 	zend_declare_property_null(ce_event_stream_closed, ZEND_STRL("errorCode"), ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "StreamReset", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "StreamReset", NULL);
 	ce_event_stream_reset = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_stream_reset, ZEND_STRL("streamId"), ZEND_ACC_PUBLIC);
 	zend_declare_property_null(ce_event_stream_reset, ZEND_STRL("errorCode"), ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "GoawayReceived", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "GoawayReceived", NULL);
 	ce_event_goaway_received = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_goaway_received, ZEND_STRL("lastStreamId"), ZEND_ACC_PUBLIC);
 	zend_declare_property_null(ce_event_goaway_received, ZEND_STRL("errorCode"), ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "SettingsReceived", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "SettingsReceived", NULL);
 	ce_event_settings_received = zend_register_internal_class_ex(&ce, ce_event);
 	zend_declare_property_null(ce_event_settings_received, ZEND_STRL("settings"), ZEND_ACC_PUBLIC);
 
-	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2", "SettingsAcked", NULL);
+	INIT_NS_CLASS_ENTRY(ce, "Varion\\Nghttp2\\Events", "SettingsAcked", NULL);
 	ce_event_settings_acked = zend_register_internal_class_ex(&ce, ce_event);
 
 	return SUCCESS;
