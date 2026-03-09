@@ -2,6 +2,10 @@
 
 This extension exposes nghttp2 as a Sans-I/O engine for PHP under the `Varion\\Nghttp2` namespace.
 
+The extension does not perform socket I/O itself.
+Applications feed inbound bytes via `receive()` and collect outbound bytes via `drainOutput()`.
+Protocol events are then consumed using `nextEvent()`.
+
 ## Quick Start
 
 ### Install via PIE
