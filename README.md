@@ -22,7 +22,8 @@ This extension exposes nghttp2 as a Sans-I/O engine for PHP under the `Varion\\N
 - `Varion\\Nghttp2\\SessionOptions`
 - `Varion\\Nghttp2\\RequestHead`
 - `Varion\\Nghttp2\\ResponseHead`
-- `Varion\\Nghttp2\\Event` and minimal event classes
+- Event hierarchy: `Varion\\Nghttp2\\Event` (abstract base), `Varion\\Nghttp2\\StreamEvent` (abstract, has `streamId`), `Varion\\Nghttp2\\ConnectionEvent` (abstract)
+- Concrete events under `Varion\\Nghttp2\\Events`: stream events (`HeadersReceived`, `DataReceived`, `StreamClosed`, `StreamReset`) and connection events (`GoawayReceived`, `SettingsReceived`, `SettingsAcked`)
 - Exception classes (`Exception`, `RuntimeException`, `ProtocolException`)
 - Minimal debugging/testing helpers
   - `hasPendingEvents(): bool`
