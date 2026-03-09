@@ -154,6 +154,21 @@ php -d extension=$(pwd)/modules/nghttp2.so examples/server_preface.php
   - `getOpenStreamCount(): int`
   - `getStreamState(int $streamId): ?string`
 
+Event class hierarchy:
+
+```text
+Event (abstract)
+|- StreamEvent (abstract, has streamId)
+|  |- HeadersReceived
+|  |- DataReceived
+|  |- StreamClosed
+|  `- StreamReset
+`- ConnectionEvent (abstract)
+   |- GoawayReceived
+   |- SettingsReceived
+   `- SettingsAcked
+```
+
 ## Event Semantics
 
 - `StreamReset` represents a stream-level forced termination (`RST_STREAM`) and should be treated as an abnormal stream outcome.
