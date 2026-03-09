@@ -279,6 +279,15 @@ Event (abstract)
 - Consume protocol events via `nextEvent()`.
 - Keep introspection minimal in the first release; do not provide a full visualization/debug API yet.
 
+## Future Direction
+
+This project focuses on exposing the HTTP/2 protocol engine.
+
+Future experiments may explore similar Sans-I/O bindings for HTTP/3 over QUIC.
+
+However, HTTP/3 requires a different transport architecture and is not currently
+in scope for this extension. This extension remains focused on HTTP/2.
+
 ## TODO / Not Implemented
 
 - `SessionOptions::strictValidation` mapping to nghttp2 options.
