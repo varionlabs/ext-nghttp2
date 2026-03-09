@@ -53,6 +53,27 @@ Benefits:
 - easier testing of protocol logic
 - clearer separation between transport and HTTP/2 protocol layers
 
+## Architecture
+
+This extension exposes the nghttp2 HTTP/2 state machine to PHP while keeping
+all socket I/O outside the extension.
+
+The extension operates as a Sans-I/O protocol engine.
+
+Applications are responsible for:
+
+- Transport (TCP/TLS sockets)
+- Event loop integration
+- Backpressure control
+- Connection lifecycle
+
+The extension is responsible for:
+
+- HTTP/2 frame encoding and decoding
+- Stream state machines
+- Flow control
+- Protocol event generation (`nextEvent()`)
+
 ## Quick Check
 
 ```bash
