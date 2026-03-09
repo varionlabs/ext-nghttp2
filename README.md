@@ -41,6 +41,18 @@ make -j"$(nproc)"
 php -d extension=$(pwd)/modules/nghttp2.so -m | grep nghttp2
 ```
 
+## Why Sans-I/O?
+
+Traditional HTTP libraries combine protocol logic with socket handling.
+
+This extension separates them.
+
+Benefits:
+
+- easier integration with different event loops
+- easier testing of protocol logic
+- clearer separation between transport and HTTP/2 protocol layers
+
 ## Quick Check
 
 ```bash
