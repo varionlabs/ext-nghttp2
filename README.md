@@ -49,6 +49,25 @@ php -d extension=$(pwd)/modules/nghttp2.so examples/client-minimal.php
 php -d extension=$(pwd)/modules/nghttp2.so examples/server-minimal.php 8080 --address=127.0.0.1
 ```
 
+## Minimal API Example
+
+```php
+<?php
+
+use Varion\Nghttp2\Session;
+
+$client = new Session(Session::ROLE_CLIENT);
+$server = new Session(Session::ROLE_SERVER);
+
+foreach ($client->drainOutput() as $chunk) {
+    $server->receive($chunk);
+}
+
+while ($event = $server->nextEvent()) {
+    var_dump(get_class($event));
+}
+```
+
 ## Client Example
 
 `examples/client-minimal.php` is a minimal HTTP/2 client example using a real TLS connection.
@@ -193,22 +212,3 @@ Event (abstract)
 - Advanced header normalization.
 - Stream list dumps, detailed window-size visibility, frame history, timeline trace.
 - Large debug visualization APIs such as debug snapshots (can be added in a separate layer later).
-
-## Minimal API Example
-
-```php
-<?php
-
-use Varion\Nghttp2\Session;
-
-$client = new Session(Session::ROLE_CLIENT);
-$server = new Session(Session::ROLE_SERVER);
-
-foreach ($client->drainOutput() as $chunk) {
-    $server->receive($chunk);
-}
-
-while ($event = $server->nextEvent()) {
-    var_dump(get_class($event));
-}
-```
