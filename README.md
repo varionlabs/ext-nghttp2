@@ -95,6 +95,25 @@ Typical integration pattern:
 
 This design keeps transport concerns separate from the HTTP/2 protocol engine.
 
+## Transport Model
+
+This extension does not manage network sockets.
+
+Applications must provide a transport layer, typically:
+
+- TCP sockets
+- TLS streams
+- event-loop driven transports
+
+Example responsibilities of the application:
+
+- TLS negotiation
+- ALPN validation
+- socket read/write loops
+- connection lifetime management
+
+The extension focuses on HTTP/2 protocol processing and state transitions.
+
 ## Quick Check
 
 ```bash
