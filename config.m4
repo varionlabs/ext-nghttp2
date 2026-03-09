@@ -12,5 +12,5 @@ if test "$PHP_NGHTTP2" != "no"; then
   ])
 
   PHP_SUBST([NGHTTP2_SHARED_LIBADD])
-  PHP_NEW_EXTENSION([nghttp2], [nghttp2.c], [$ext_shared])
+  PHP_NEW_EXTENSION([nghttp2], [nghttp2.c session.c event.c], [$ext_shared])
 fi
